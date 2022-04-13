@@ -7,6 +7,9 @@ import { LoanCreateComponent } from './features/loan/loan-create/loan-create.com
 import { LoanListComponent } from './features/loan/loan-list/loan-list.component';
 import { PageLayoutComponent } from './pages/page-layout/page-layout.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
+import { ListComponent } from './pages/list/list.component';
+import { SavesComponent } from './pages/saves/saves.component';
+import { CalendarComponent } from './pages/calendar/calendar.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +17,10 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
     LoanCreateComponent,
     LoanListComponent,
     PageLayoutComponent,
-    BreadcrumbComponent
+    BreadcrumbComponent,
+    ListComponent,
+    SavesComponent,
+    CalendarComponent
   ],
   imports: [
     BrowserModule,
