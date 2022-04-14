@@ -1,0 +1,9 @@
+.container {
+    display: flex;
+
+    .header {
+        height: 5rem;
+        flex-grow: 1;
+        background: blue;
+    }
+}
