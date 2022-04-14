@@ -1,0 +1,5 @@
+<ul class="breadcrumb">
+  <li class="breadcrumb-item" *ngFor="let obj of links; index as index">
+    <a [routerLink]="obj.path" (click)="linkOnClick(index, $event)">{{obj.content}}</a>
+  </li>
+</ul>
