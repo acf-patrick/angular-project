@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-
+import { PageLoanRoutingModule } from './page-loan-routing.module';
+import { LoanModule } from 'src/app/features/loan/loan.module';
 
 @NgModule({
   declarations: [],
-  imports: [
-    CommonModule
-  ]
+  imports: [CommonModule, LoanModule, PageLoanRoutingModule],
 })
-export class PageLoanModule { }
+export class PageLoanModule {}
