@@ -1,3 +1,12 @@
-/* .container {
-    height: 5rem;
-} */
+#first {
+    background: #3f3351;
+
+    a {
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .user-icon, .user-link {
+        color: white;
+    }
+}

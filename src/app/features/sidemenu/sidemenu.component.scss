@@ -1,4 +1,4 @@
-.container {
+.sidemenu {
   background-color: #1f1d36;
   color: #e9a6a6;
   max-height: 100%;
@@ -19,15 +19,15 @@
 .fas {
   color: brown;
 }
-.menu {
+.sidemenu-menu {
   width: max-content;
   font-size: 15px;
   cursor: pointer;
 }
-.menu.front {
+.sidemenu-menu.front {
   padding-top: 1rem;
 }
-.btn {
+.sidemenu-btn {
   border-radius: 100px;
   color: #1f1d36;
   display: flex;
@@ -37,6 +37,6 @@
   cursor: default;
   font-family: inherit;
 }
-.btn:focus {
+.sidemenu-btn:focus {
   outline: 0;
 }
