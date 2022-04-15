@@ -1,6 +1,8 @@
+@import "../../../@shared/variables";
+
 .sidemenu {
-  background-color: #1f1d36;
-  color: #e9a6a6;
+  background-color: $quaternary;
+  color: $primary;
   max-height: 100%;
   height: 100vh;
   width: 280px;
@@ -9,39 +11,60 @@
   align-items: center;
   overflow-y: auto;
   gap: 1.5rem;
+  position: sticky;
+  top: 0;
 
-  * {
-    text-align: center;
+  &-head {
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    padding-top: 2rem;
   }
 
-  a {
-    text-decoration: none;
-    color: #e9a6a6;
+  &-container {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    overflow: auto;
+    width: 100%;
+    // text-align: center;
+
+    & > a {
+      padding: 0.5rem 0;
+      padding-left: 1rem;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.295);
+      }
+    }
+
+    a {
+      text-decoration: none;
+      color: $primary;
+    }
+  }
+
+  &-menu {
+    font-size: 1rem;
+    cursor: pointer;
+  }
+
+  button {
+    width: 85%;
+    border-radius: 100px;
+    color: $quaternary;
+    padding: 0.7rem 0;
+    cursor: default;
+    font-family: inherit;
+    margin-top: 1rem;
+    align-self: center;
+
+    &:focus {
+      outline: 0;
+    }
   }
 }
-.head {
-  font-size: 2rem;
-  font-weight: bold;
-  cursor: pointer;
-  padding-top: 2rem;
-}
+
 .fas {
   color: brown;
-}
-.sidemenu-menu {
-  font-size: 15px;
-  cursor: pointer;
-}
-.sidemenu-menu.front {
-  padding-top: 1rem;
-}
-.sidemenu-btn {
-  border-radius: 100px;
-  color: #1f1d36;
-  padding: 0.7rem 5rem;
-  cursor: default;
-  font-family: inherit;
-}
-.sidemenu-btn:focus {
-  outline: 0;
 }

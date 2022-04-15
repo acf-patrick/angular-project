@@ -1,4 +1,4 @@
-<ul class="breadcrumb">
+<ul class="breadcrumb shadow-sm">
   <li class="breadcrumb-item" *ngFor="let obj of links; index as index">
     <a [routerLink]="obj.path" (click)="linkOnClick(index, $event)" routerLinkActive="active">{{obj.content}}</a>
   </li>

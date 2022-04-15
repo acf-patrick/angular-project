@@ -1,5 +1,9 @@
+@import '../../../@shared/variables';
+
 #first {
-  background: #3f3351;
+  background: $tertiary;
+  position: sticky;
+  top: 0;
 
   a {
     text-decoration: none;
