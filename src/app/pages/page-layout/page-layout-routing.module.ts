@@ -9,14 +9,12 @@ const routes: Routes = [
     component: PageLayoutComponent
   } ,{
     path: "loan",
+    component: PageLayoutComponent,
     loadChildren: () => import('../page-loan/page-loan.module')
       .then(module => module.PageLoanModule)
   }, {
-    path: 'not-found',
-    component: NotFoundComponent
-  }, {
     path: '**',
-    redirectTo: 'not-found'
+    component: NotFoundComponent
   }
 ];
 

@@ -9,6 +9,15 @@
   align-items: center;
   overflow-y: auto;
   gap: 1.5rem;
+
+  * {
+    text-align: center;
+  }
+
+  a {
+    text-decoration: none;
+    color: #e9a6a6;
+  }
 }
 .head {
   font-size: 2rem;
@@ -20,7 +29,6 @@
   color: brown;
 }
 .sidemenu-menu {
-  width: max-content;
   font-size: 15px;
   cursor: pointer;
 }
@@ -30,9 +38,6 @@
 .sidemenu-btn {
   border-radius: 100px;
   color: #1f1d36;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   padding: 0.7rem 5rem;
   cursor: default;
   font-family: inherit;

@@ -1,0 +1,14 @@
+<div class="sidemenu float-start">
+  <div class="head">
+    <i class="fas fa-wallet"></i>
+    Bank Init
+  </div>
+  <a class="sidemenu-menu front" (click)="onClick('/loan/list')">Liste des prêts</a>
+  <a class="sidemenu-menu"  (click)="onClick('/loan/create')"
+    >Enregistrer un nouveau prêt</a
+  >
+  <a class="sidemenu-menu" routerLink="">Calendrier de remboursement</a>
+  <a class="sidemenu-menu" routerLink="">
+    <button class="sidemenu-btn" disabled>Dashboard</button>
+  </a>
+</div>

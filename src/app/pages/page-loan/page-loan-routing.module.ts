@@ -6,7 +6,7 @@ import { LoanListComponent } from 'src/app/features/loan/loan-list/loan-list.com
 const routes: Routes = [
   {
     path: 'create',
-    component: LoanCreateComponent,
+    component: LoanCreateComponent
   },
   {
     path: 'list',
