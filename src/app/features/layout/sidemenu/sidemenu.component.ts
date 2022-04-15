@@ -10,7 +10,7 @@ const links: Link[] = [
   { path: '', content: 'Actionnaires' },
   { path: '', content: 'Clients' },
   { path: '', content: 'Annuaire' },
-  { path: '', content: 'Flow chart' }
+  { path: '', content: 'Flow chart' },
 ];
 
 @Component({
@@ -26,11 +26,26 @@ export class SidemenuComponent implements OnInit {
     private breadcrumbService: BreadcrumbService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    window.addEventListener('resize', (event) => {
+      console.log(event);
+      
+    });
+  }
 
   onClick(index: number): void {
     let obj = links[index];
     this.breadcrumbService.replace(obj.path, obj.content);
     this.router.navigate([obj.path]);
+  }
+
+  togglerOnClick(): void {
+    let div: any = document.querySelector('.sidemenu');
+    div.style.width = '280px';
+  }
+
+  closeOnClick(): void {
+    let div: any = document.querySelector('.sidemenu');
+    div.style.width = '0';
   }
 }

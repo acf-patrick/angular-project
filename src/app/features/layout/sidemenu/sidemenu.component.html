@@ -3,12 +3,15 @@
     <i class="fas fa-wallet"></i>
     Bank Init
   </div>
+  <button class="sidemenu-close" (click)="closeOnClick()">X<i class="fas fa-xmark fa-md"></i></button>
   <div class="sidemenu-container">
     <a *ngFor="let obj of links; index as i" (click)="onClick(i)" class="sidemenu-menu">{{obj.content}}</a>
-    <button disabled>
+    <button class="sidemenu-btn" disabled>
       <a> Dashboard </a>
     </button>
   </div>
 </div>
 
-<i class="fas fa-wallet button"></i>
+<!-- <i class="fas fa-wallet button"></i> -->
+
+<button type="button" class="sidemenu-toggler btn btn-outline-light" (click)="togglerOnClick()">Bank</button>
