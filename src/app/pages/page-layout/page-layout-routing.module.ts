@@ -17,10 +17,6 @@ const routes: Routes = [
         (module) => module.PageLoanModule
       ),
   },
-  {
-    path: '**',
-    component: NotFoundComponent,
-  },
 ];
 
 @NgModule({

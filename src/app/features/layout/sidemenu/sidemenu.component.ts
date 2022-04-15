@@ -7,6 +7,10 @@ const links: Link[] = [
   { path: '/loan/list', content: 'Liste des prêts' },
   { path: '/loan/create', content: 'Enregistrer un nouveau prêt' },
   { path: '', content: 'Calendrier de remboursement' }, // fix this
+  { path: '', content: 'Actionnaires' },
+  { path: '', content: 'Clients' },
+  { path: '', content: 'Annuaire' },
+  { path: '', content: 'Flow chart' }
 ];
 
 @Component({

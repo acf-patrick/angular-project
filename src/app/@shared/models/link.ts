@@ -1,4 +1,4 @@
-export default interface Link {
-  path: string;
-  content: string;
+export default class Link {
+  path!: string;
+  content!: string;
 }

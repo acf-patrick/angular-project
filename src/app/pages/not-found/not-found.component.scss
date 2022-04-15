@@ -1,0 +1,21 @@
+@import "../../@shared/styles/variables";
+
+.illustration {
+  width: 50%;
+  transform: translateY(25%);
+  margin: auto;
+
+  img {
+    width: 100%;
+  }
+
+  p {
+    span {
+      color: $primary;
+    }
+    color: $secondary;
+    margin-top: 2rem;
+    font-size: 2rem;
+    text-align: center;
+  }
+}
