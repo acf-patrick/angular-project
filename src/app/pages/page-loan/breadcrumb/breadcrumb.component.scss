@@ -1,14 +1,18 @@
-@import '../../../@shared/variables';
+@import "../../../@shared/styles/variables";
 
 ul {
   padding: 0 1rem;
   position: sticky;
   top: 4rem;
   background-color: white;
+
+  & > li:last-child a {
+    color: lighten($quaternary, 50) !important;
+  }
 }
 
 a {
-  color: darken($quaternary, 5) !important;
+  color: black !important;
   font-weight: bold;
   text-decoration: none;
   &:hover {

@@ -5,17 +5,22 @@ import { NotFoundComponent } from '../not-found/not-found.component';
 
 const routes: Routes = [
   {
-    path: "",
-    component: PageLayoutComponent
-  } ,{
-    path: "loan",
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'loan',
+  },
+  {
+    path: 'loan',
     component: PageLayoutComponent,
-    loadChildren: () => import('../page-loan/page-loan.module')
-      .then(module => module.PageLoanModule)
-  }, {
+    loadChildren: () =>
+      import('../page-loan/page-loan.module').then(
+        (module) => module.PageLoanModule
+      ),
+  },
+  {
     path: '**',
-    component: NotFoundComponent
-  }
+    component: NotFoundComponent,
+  },
 ];
 
 @NgModule({

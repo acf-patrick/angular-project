@@ -1,5 +1,5 @@
 <ul class="breadcrumb shadow-sm">
-  <li class="breadcrumb-item" *ngFor="let obj of links; index as index">
+  <li class="breadcrumb-item" *ngFor="let obj of service.getLinks(); index as index">
     <a [routerLink]="obj.path" (click)="linkOnClick(index, $event)" routerLinkActive="active">{{obj.content}}</a>
   </li>
 </ul>

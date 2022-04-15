@@ -1,15 +1,16 @@
-@import '../../../@shared/variables';
+@import '../../../@shared/styles/variables';
 
 #first {
   background: $tertiary;
   position: sticky;
   top: 0;
+  z-index: 1;
 
   a {
     text-decoration: none;
     cursor: pointer;
   }
-
+  
   .user-icon,
   .user-link {
     color: white;

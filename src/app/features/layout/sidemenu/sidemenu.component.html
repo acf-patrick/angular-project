@@ -4,13 +4,7 @@
     Bank Init
   </div>
   <div class="sidemenu-container">
-    <a class="sidemenu-menu front" (click)="onClick('/loan/list')"
-      >Liste des prêts</a
-    >
-    <a class="sidemenu-menu" (click)="onClick('/loan/create')"
-      >Enregistrer un nouveau prêt</a
-    >
-    <a class="sidemenu-menu" routerLink="">Calendrier de remboursement</a>
+    <a *ngFor="let obj of links; index as i" (click)="onClick(i)" class="sidemenu-menu">{{obj.content}}</a>
     <button disabled>
       <a> Dashboard </a>
     </button>
