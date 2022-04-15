@@ -14,11 +14,9 @@ const links = [
 })
 export class BreadcrumbComponent implements OnInit {
   links: any[] = links;
-
   constructor() {}
 
   ngOnInit(): void {}
-
   linkOnClick(index: number, event: any): void {
     event.preventDefault();
     if (index !== this.links.length) this.links.splice(index + 1);
