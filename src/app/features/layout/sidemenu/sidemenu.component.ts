@@ -4,13 +4,14 @@ import Link from 'src/app/@shared/models/link';
 import { BreadcrumbService } from 'src/app/@shared/services/breadcrumb.service';
 
 const links: Link[] = [
+  { path: '/loan', content: 'Dashboard' },
   { path: '/loan/list', content: 'Liste des prêts' },
   { path: '/loan/create', content: 'Enregistrer un nouveau prêt' },
-  { path: '', content: 'Calendrier de remboursement' }, // fix this
+  /*   { path: '', content: 'Calendrier de remboursement' }, // fix this
   { path: '', content: 'Actionnaires' },
   { path: '', content: 'Clients' },
   { path: '', content: 'Annuaire' },
-  { path: '', content: 'Flow chart' },
+  { path: '', content: 'Flow chart' }, */
 ];
 
 @Component({
@@ -20,6 +21,7 @@ const links: Link[] = [
 })
 export class SidemenuComponent implements OnInit {
   links = links;
+  currentHighlight!: any;
 
   constructor(
     private router: Router,
@@ -29,14 +31,19 @@ export class SidemenuComponent implements OnInit {
   ngOnInit(): void {
     window.addEventListener('resize', (event) => {
       console.log(event);
-      
     });
   }
 
-  onClick(index: number): void {
+  onClick(event: any, index: number): void {
     let obj = links[index];
     this.breadcrumbService.replace(obj.path, obj.content);
     this.router.navigate([obj.path]);
+
+    if (this.currentHighlight)
+      this.currentHighlight.style.background = 'transparent';
+    const link = event.currentTarget;
+    link.style.background = '#864879';
+    this.currentHighlight = link;
   }
 
   togglerOnClick(): void {
