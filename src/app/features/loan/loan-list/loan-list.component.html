@@ -14,12 +14,17 @@
   <tbody>
     <tr *ngFor="let loan of datas">
       <td class="actions d-flex gap-1 px-2">
-        <button title="Voir" class="btn btn-secondary"><i class="fas fa-eye"></i></button>
-        <button title="Modifier" class="btn btn-primary"><i class="fas fa-pencil"></i></button>
+        <button title="Voir" class="btn btn-primary">
+          <i class="fas fa-eye"></i>
+        </button>
+        <button title="Modifier" class="btn btn-danger">
+          <i class="fas fa-pencil"></i>
+        </button>
       </td>
-      <td *ngFor="let item of loan | keyvalue : originalOrder">
+      <td *ngFor="let item of loan | keyvalue: originalOrder">
         {{ item.value | longDate }}
       </td>
     </tr>
   </tbody>
 </table>
+<app-pagination [count]="10"></app-pagination>

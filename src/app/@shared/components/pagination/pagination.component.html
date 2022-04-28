@@ -1,0 +1,13 @@
+<nav class="py-3">
+  <ul class="d-flex p-0 justify-content-center align-items-center gap-2">
+    <li class="me-4">
+      <button class="direction"><i class="fas fa-chevron-left"></i></button>
+    </li>
+    <li *ngFor="let _ of range(count); index as i">
+      <button type="button">{{ i + 1 }}</button>
+    </li>
+    <li class="ms-4">
+      <button class="direction"><i class="fas fa-chevron-right"></i></button>
+    </li>
+  </ul>
+</nav>

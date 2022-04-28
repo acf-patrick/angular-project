@@ -1,0 +1,25 @@
+@import "../../../@shared/styles/variables";
+
+ul {
+  list-style: none;
+}
+
+button {
+  background: $quaternary;
+  border: none;
+  width: 40px;
+  padding: 0.5rem;
+  border-radius: 30px;
+  color: $primary;
+  transition: all 300ms ease-out;
+
+  &:hover {
+    background: lighten($quaternary, 20);
+  }
+}
+
+.direction {
+  &:hover {
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.425);
+  }
+}
