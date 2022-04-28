@@ -1,4 +1,11 @@
-.junks {
-    text-align: justify;
-    padding: 2rem;
+@import "../../../@shared/styles/variables";
+
+thead {
+  font-size: 0.7rem;
+  color: $quaternary;
+}
+
+td {
+  text-align: center;
+  font-size: 0.9rem;
 }
