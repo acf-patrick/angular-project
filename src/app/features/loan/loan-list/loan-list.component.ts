@@ -17,4 +17,8 @@ export class LoanListComponent implements OnInit {
     // Use service and Observable in the future!
     this.datas = mockDatas;
   }
+
+  originalOrder(a: any, b: any) {
+    return 0;
+  }
 }

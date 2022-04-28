@@ -3,9 +3,14 @@
 thead {
   font-size: 0.7rem;
   color: $quaternary;
+
+  th {
+    text-align: center;
+  }
 }
 
 td {
   text-align: center;
   font-size: 0.9rem;
+  padding: 0.5rem 0;
 }
