@@ -1,18 +1,38 @@
 @import "../../../@shared/styles/variables";
 
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+}
+
+table {
+  animation: appear 500ms ease-out 500ms backwards;
+}
+
 thead {
   font-size: 0.7rem;
   color: $quaternary;
+}
 
-  th {
-    text-align: center;
-  }
+th {
+  text-align: center;
 }
 
 td {
   text-align: center;
   font-size: 0.9rem;
   padding: 0.5rem 0;
+
+  &:first-child {
+    background: none !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  button {
+    font-size: 0.8rem;
+  }
 }
 
 div button {

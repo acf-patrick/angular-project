@@ -48,4 +48,16 @@ const mockDatas: LoanModel[] = [
   },
 ];
 
+// even more mock datas
+for (let i = 0; i < 30; ++i)
+  mockDatas.push({
+    client: "MIHARISOA Tojoniaina Patrick",
+    amount: i,
+    createdAt: new Date(i),
+    endDate: new Date(i),
+    interest: i,
+    percentage: i,
+    paymentMode: String(i),
+  });
+
 export default mockDatas;

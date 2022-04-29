@@ -7,7 +7,7 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class PaginationComponent implements OnInit {
   @Input() count = 0;
-  @Output() buttonOnClick = new EventEmitter<Number>();
+  @Output() buttonOnClick = new EventEmitter<number>();
   lastClicked: any = null;
   lastNumClicked = 0;
 
@@ -30,8 +30,10 @@ export class PaginationComponent implements OnInit {
   dirOnClick(value: String): void {
     if (value === 'left') {
       if (this.lastNumClicked > 1) this.lastNumClicked--;
+      else this.lastNumClicked = this.count;
     } else if (value === 'right') {
       if (this.lastNumClicked < this.count) this.lastNumClicked++;
+      else this.lastNumClicked = 1;
     }
     this.setLastClicked(document.querySelector(`#num-${this.lastNumClicked}`));
     this.emitLastValue();
@@ -49,7 +51,7 @@ export class PaginationComponent implements OnInit {
     return Array(n);
   }
 
-  // helper : create ID for number button 
+  // helper : create ID for number button
   buttonID(n: Number): String {
     return `num-${n}`;
   }

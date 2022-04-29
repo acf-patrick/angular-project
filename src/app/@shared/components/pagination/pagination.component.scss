@@ -1,5 +1,12 @@
 @import "../../../@shared/styles/variables";
 
+nav {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 ul {
   list-style: none;
 }
@@ -21,5 +28,13 @@ button {
 .direction {
   &:hover {
     box-shadow: 0 5px 5px rgba(0, 0, 0, 0.425);
+  }
+  
+  &.left:active {
+    transform: translateX(-10px);
+  }
+
+  &.right:active {
+    transform: translateX(10px);
   }
 }

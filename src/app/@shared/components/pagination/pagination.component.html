@@ -1,13 +1,23 @@
 <nav class="py-3">
   <ul class="d-flex p-0 justify-content-center align-items-center gap-2">
     <li class="me-4">
-      <button class="direction" (click)="dirOnClick('left')"><i class="fas fa-chevron-left"></i></button>
+      <button class="direction left" (click)="dirOnClick('left')" title="previous">
+        <i class="fas fa-chevron-left"></i>
+      </button>
     </li>
     <li *ngFor="let _ of range(count); index as i">
-      <button type="button" [id]="buttonID(i+1)" (click)="numOnClick($event.currentTarget, i+1)">{{ i + 1 }}</button>
+      <button
+        type="button"
+        [id]="buttonID(i + 1)"
+        (click)="numOnClick($event.currentTarget, i + 1)"
+      >
+        {{ i + 1 }}
+      </button>
     </li>
     <li class="ms-4">
-      <button class="direction" (click)="dirOnClick('right')"><i class="fas fa-chevron-right"></i></button>
+      <button class="direction right" (click)="dirOnClick('right')" title="next">
+        <i class="fas fa-chevron-right"></i>
+      </button>
     </li>
   </ul>
 </nav>

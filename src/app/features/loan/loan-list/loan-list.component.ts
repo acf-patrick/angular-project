@@ -9,31 +9,26 @@ import mockDatas from './mock';
 })
 export class LoanListComponent implements OnInit {
   datas!: LoanModel[];
+  list!: LoanModel[];
+  count = 5;
 
   constructor() {}
 
   ngOnInit(): void {
     // retrieve mock data
     // Use service and Observable in the future!
-    this.datas = mockDatas;
-    for (let i = 0; i < 30; ++i)
-      // more mock datas
-      this.datas.push({
-        client: String(i),
-        amount: i,
-        createdAt: new Date(i),
-        endDate: new Date(i),
-        interest: i,
-        percentage: i,
-        paymentMode: String(i),
-      });
+    this.datas = [...mockDatas];
+
+    this.pageOnChange(1);
   }
 
+  // Prevent sort and keep keys order
   originalOrder(a: any, b: any): number {
     return 0;
   }
 
-  print(obj: any) {
-    console.log(obj);
+  pageOnChange(page: number) {
+    const start = (page - 1) * this.count;
+    this.list = this.datas.slice(start, start + this.count);
   }
 }
