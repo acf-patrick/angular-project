@@ -17,7 +17,7 @@ export class LoanListComponent implements OnInit {
   ngOnInit(): void {
     // retrieve mock data
     // Use service and Observable in the future!
-    this.datas = [...mockDatas];
+    this.datas = [...mockDatas]; // Contains initial value
 
     this.pageOnChange(1);
   }

@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import Link from 'src/app/@shared/models/link';
 import { BreadcrumbService } from 'src/app/@shared/services/breadcrumb.service';
 
-const links: Link[] = [
+const LINKS: Link[] = [
   { path: '/loan', content: 'Dashboard' },
   { path: '/loan/list', content: 'Liste des prêts' },
   { path: '/loan/create', content: 'Enregistrer un nouveau prêt' },
-  { path: '/loan/reimbursment', content: 'Calendrier de remboursement' }
+  { path: '/loan/reimbursment', content: 'Calendrier de remboursement' },
 ];
 
 @Component({
@@ -16,7 +16,7 @@ const links: Link[] = [
   styleUrls: ['./sidemenu.component.scss'],
 })
 export class SidemenuComponent implements OnInit {
-  links = links;
+  links = LINKS;
   currentHighlight!: any;
 
   constructor(
@@ -25,19 +25,27 @@ export class SidemenuComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    window.addEventListener('resize', (event) => {
-      console.log(event);
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd)
+        if (event.urlAfterRedirects === '/loan') {
+          this.setHighlight(
+            document.querySelector('.sidemenu-container a:first-child')
+          );
+        }
     });
   }
 
   onClick(event: any, index: number): void {
-    let obj = links[index];
+    let obj = LINKS[index];
     this.breadcrumbService.replace(obj.path, obj.content);
+    if (obj.content === 'Dashboard') this.breadcrumbService.remove();
     this.router.navigate([obj.path]);
+    this.setHighlight(event.currentTarget);
+  }
 
+  setHighlight(link: any) {
     if (this.currentHighlight)
       this.currentHighlight.style.background = 'transparent';
-    const link = event.currentTarget;
     link.style.background = '#864879';
     this.currentHighlight = link;
   }
