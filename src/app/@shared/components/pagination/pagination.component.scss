@@ -29,7 +29,7 @@ button {
   &:hover {
     box-shadow: 0 5px 5px rgba(0, 0, 0, 0.425);
   }
-  
+
   &.left:active {
     transform: translateX(-10px);
   }
@@ -37,4 +37,23 @@ button {
   &.right:active {
     transform: translateX(10px);
   }
+}
+
+$dotsRadius: 10px;
+.threeDots {
+  display: flex;
+  gap: 5px;
+  padding: 0 0.5rem;
+
+  div {
+    width: $dotsRadius;
+    height: $dotsRadius;
+    background: $quaternary;
+    border-radius: 5px;
+  }
+}
+
+.num-active {
+  background: $secondary;
+  color: $quaternary;
 }

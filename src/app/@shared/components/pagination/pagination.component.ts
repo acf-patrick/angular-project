@@ -6,27 +6,21 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./pagination.component.scss'],
 })
 export class PaginationComponent implements OnInit {
-  @Input() count = 0;
+  @Input() count = 1;
   @Output() buttonOnClick = new EventEmitter<number>();
   lastClicked: any = null;
-  lastNumClicked = 0;
+  lastNumClicked = 1;
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
   emitLastValue(): void {
     this.buttonOnClick.emit(this.lastNumClicked);
   }
 
-  setLastClicked(button: any) {
-    if (this.lastClicked === button) return;
-    if (this.lastClicked) this.lastClicked.style.outline = 'none';
-    this.lastClicked = button;
-    button.style.outline = 'solid 5px #5a5ae191';
-  }
-
-  // Prev / Next button clicked
+  /** Prev / Next button clicked */
   dirOnClick(value: String): void {
     if (value === 'left') {
       if (this.lastNumClicked > 1) this.lastNumClicked--;
@@ -35,24 +29,34 @@ export class PaginationComponent implements OnInit {
       if (this.lastNumClicked < this.count) this.lastNumClicked++;
       else this.lastNumClicked = 1;
     }
-    this.setLastClicked(document.querySelector(`#num-${this.lastNumClicked}`));
     this.emitLastValue();
   }
 
-  // Button numbers clicked
-  numOnClick(button: any, value: number): void {
-    this.setLastClicked(button);
+  /** Button numbers clicked */
+  numOnClick(value: number): void {
     this.lastNumClicked = value;
     this.emitLastValue();
   }
 
-  // helper : create range of integers
-  range(n: Number): Array<Number> {
-    return Array(n);
+  /**
+   * Create range of integers
+   * if -1 : show three dots
+   * else show a button with the index as inner text
+   */
+  range(): number[] {
+    const ret = [1];
+    const first = Math.min(3, this.count);
+    if (this.lastNumClicked <= first)
+      for (let i = 2; i <= first; ++i) ret.push(i);
+    else {
+    }
+    if (this.count > 4) {
+      ret.push(-1);
+
+      ret.push(this.count);
+    } else if (this.count === 4) ret.push(4);
+
+    return ret;
   }
 
-  // helper : create ID for number button
-  buttonID(n: Number): String {
-    return `num-${n}`;
-  }
 }
