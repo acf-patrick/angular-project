@@ -16,9 +16,24 @@ export class LoanListComponent implements OnInit {
     // retrieve mock data
     // Use service and Observable in the future!
     this.datas = mockDatas;
+    for (let i = 0; i < 30; ++i)
+      // more mock datas
+      this.datas.push({
+        client: String(i),
+        amount: i,
+        createdAt: new Date(i),
+        endDate: new Date(i),
+        interest: i,
+        percentage: i,
+        paymentMode: String(i),
+      });
   }
 
-  originalOrder(a: any, b: any) {
+  originalOrder(a: any, b: any): number {
     return 0;
+  }
+
+  print(obj: any) {
+    console.log(obj);
   }
 }
