@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { PageLoanRoutingModule } from './page-loan-routing.module';
 import { LoanModule } from 'src/app/features/loan/loan.module';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
+import { FormsModule ,ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [BreadcrumbComponent],
