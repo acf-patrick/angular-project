@@ -13,8 +13,7 @@ export class PaginationComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   emitLastValue(): void {
     this.buttonOnClick.emit(this.lastNumClicked);
@@ -45,18 +44,19 @@ export class PaginationComponent implements OnInit {
    */
   range(): number[] {
     const ret = [1];
-    const first = Math.min(3, this.count);
-    if (this.lastNumClicked <= first)
+    const count = this.count - 1;
+    const first = Math.min(3, count < 0 ? 4 : count);
+    if (this.lastNumClicked <= first) {
       for (let i = 2; i <= first; ++i) ret.push(i);
-    else {
-    }
-    if (this.count > 4) {
-      ret.push(-1);
-
+      if (this.count > 4) ret.push(-1);
       ret.push(this.count);
-    } else if (this.count === 4) ret.push(4);
-
+    } else if (this.lastNumClicked >= 4) {
+      ret.push(-1);
+      const start = Math.floor((this.lastNumClicked - 1) / 3) * 3 + 1;
+      for (let i = start; i <= Math.min(start + 2, count); ++i) ret.push(i);
+      if (this.count > start + 2) ret.push(-1);
+      ret.push(this.count);
+    }
     return ret;
   }
-
 }

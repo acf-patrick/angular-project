@@ -10,7 +10,7 @@ import mockDatas from './mock';
 export class LoanListComponent implements OnInit {
   datas!: LoanModel[];
   list!: LoanModel[];
-  count = 5;
+  count = 3;
 
   constructor() {}
 
@@ -25,6 +25,10 @@ export class LoanListComponent implements OnInit {
   // Prevent sort and keep keys order
   originalOrder(a: any, b: any): number {
     return 0;
+  }
+
+  pageCount() {
+    return Math.floor(this.datas.length / this.count);
   }
 
   pageOnChange(page: number) {

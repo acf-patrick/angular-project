@@ -44,6 +44,6 @@
   </tbody>
 </table>
 <app-pagination
-  [count]="datas.length / count"
+  [count]="pageCount()"
   (buttonOnClick)="pageOnChange($event)"
 ></app-pagination>
