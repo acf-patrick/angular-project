@@ -1,1 +1,97 @@
-<p>loan-create works!</p>
+<div class="card">
+  <div class="corps">
+
+    <div class="head">
+      <p class="h3">Formulaire de saisie d'un prêt</p>
+    </div><!-- fin du head -->
+    <form [formGroup]="formgroup" (submit)="handleSubmit(formgroup)">
+      <div class="corps container1">
+        <div class="row">
+          <div class="col-md-5 col-sm-12">
+            <label for="agent" class="form-label">Responsable</label>
+            <select name="agent" class="form-select agent" id="agent">
+              <option value="">Agent:</option>
+              <option value="rakoto">Rakoto</option>
+              <option value="rabe">Rabe</option>
+              <option value="naivo">Naivo</option>
+              <option value="randrema">Randrema</option>
+            </select>
+          </div>
+          <div class="col-md-4 col-sm-12">
+            <label for="montant" class="form-label">Montant prêt</label>
+            <div class="input-group">
+              <span class="input-group-text">ar</span>
+              <input type="number" class="form-control" min="5000" formControlName="money" #money  >
+            </div>
+          </div>
+          <div class="col-md-3">
+            <label for="pourcentage" class="form-label">Pourcentage</label>
+            <input type="number" class="form-control" placeholder="0%" min="0" max="100" formControlName="pourcentage" #pourcentage>
+          </div>
+        </div>
+      </div><!-- fin du container1 -->
+
+
+      <div class="container2">
+        <div class="row">
+          <div class="col-md-6 col-12">
+            <label for="datePret" class="form-label">Date de prêt</label>
+            <input type="text" id="datePret" class="form-control datedepret" disable formControlName="dateDePret" #dateDePret>
+          </div>
+          <div class="col-md-6 col-12">
+            <label for="dateRenboursement" class="form-label">Date de remboursement</label>
+            <input type="date" id="dateRenboursement" class="form-control" formControlName="dateDeRenboursement" #dateDeRenboursement min="2050-01-01" onfocus="this.min=new Date().toISOString().split('T')[0]" >
+          </div>
+        </div>
+      </div>
+
+      <div class="container3">
+        <div class="row">
+          <div class="col-md-6 col-12">
+            <label for="modeRemboursement" class="form-label">Mode de remboursement</label>
+            <select name="modeRemboursement" class="form-select" id="modeRemboursement" formControlName="ModeDeRemboursement" #ModeDeRemboursement >
+              <option value="parSemaine">Par semaine</option>
+              <option value="parMoins">Par mois</option>
+              <option value="trimestrielle">Trimestrielle</option>
+              <option value="Semestrielle">Semestrielle</option>
+            </select>
+          </div>
+          <div class="col-md-6 col-12">
+            <label for="modeDepayement" class="form-label">Mode de payement capital</label>
+            <select name="modeDepayement" class="form-select" id="modeDepayement" formControlName="ModeDePayemment" #ModeDePayemment>
+              <option value="mvola">Mvola</option>
+              <option value="orangeMoney">Orange money</option>
+              <option value="airtelMoney">Airtel money</option>
+              <option value="enEspece">En espéce</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="container4">
+        <div class="row">
+
+          <div class="col-md-6">
+            <label for="commentaire" class="form-label">Commentaire</label>
+            <textarea name="commentaire" id="commentaire" class="form-control" formControlName="Commentaire" #Commentaire ></textarea>
+          </div>
+
+          <div class="col-md-6 col-12">
+            <label for="modeDepayementInteret" class="form-label">Mode de payement d'intêret</label>
+            <select name="modeDepayementInteret" class="form-select" id="modeDepayementInteret" formControlName="Commentaire" #Commentaire>
+              <option value="mvola">Mvola</option>
+              <option value="orangeMoney">Orange money</option>
+              <option value="airtelMoney">Airtel money</option>
+              <option value="enEspece">En espéce</option>
+            </select>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="foot d-flex">
+        <input type="submit" class="btn bouton mr-6" value="Enregistrer">
+      </div>
+
+    </form>
+  </div>
+</div>
