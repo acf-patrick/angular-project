@@ -1,11 +1,17 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  AfterViewInit,
+} from '@angular/core';
 
 @Component({
   selector: 'app-pagination',
   templateUrl: './pagination.component.html',
   styleUrls: ['./pagination.component.scss'],
 })
-export class PaginationComponent implements OnInit {
+export class PaginationComponent implements AfterViewInit {
   @Input() count = 1;
   @Output() buttonOnClick = new EventEmitter<number>();
   lastClicked: any = null;
@@ -13,14 +19,21 @@ export class PaginationComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngAfterViewInit(): void {
+    this.checkBound();
+  }
 
   emitLastValue(): void {
     this.buttonOnClick.emit(this.lastNumClicked);
   }
 
+  checkBound() {
+    if (this.lastNumClicked > this.count) this.lastNumClicked = this.count;
+  }
+
   /** Prev / Next button clicked */
   dirOnClick(value: String): void {
+    this.checkBound();
     if (value === 'left') {
       if (this.lastNumClicked > 1) this.lastNumClicked--;
       else this.lastNumClicked = this.count;
@@ -44,6 +57,9 @@ export class PaginationComponent implements OnInit {
    */
   range(): number[] {
     const ret = [1];
+    if (this.count == 1) return ret;
+    else if (!this.count) return [];
+    
     const count = this.count - 1;
     const first = Math.min(3, count < 0 ? 4 : count);
     if (this.lastNumClicked <= first) {

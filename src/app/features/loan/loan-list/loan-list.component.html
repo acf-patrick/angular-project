@@ -1,6 +1,6 @@
 <h1 class="px-2">Liste des prêts</h1>
 
-<div class="input-group justify-content-end pe-3 mb-2">
+<div class="input-group justify-content-end pe-3 mb-2" id="search">
   <div>
     <input
       type="search"
@@ -9,7 +9,7 @@
       placeholder="Search"
     />
   </div>
-  <button type="button" class="btn btn-primary">
+  <button type="button" class="btn btn-primary" (click)="filter()">
     <i class="fas fa-search"></i>
   </button>
 </div>
@@ -40,6 +40,9 @@
       <td *ngFor="let item of loan | keyvalue: originalOrder" class="px-3">
         {{ item.value | longDate }}
       </td>
+    </tr>
+    <tr *ngIf="list.length == 0">
+      No entry found
     </tr>
   </tbody>
 </table>

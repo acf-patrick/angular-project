@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  OnChanges,
+  SimpleChanges,
+} from '@angular/core';
 import LoanModel from 'src/app/@shared/models/loan';
 import mockDatas from './mock';
 
@@ -10,16 +16,25 @@ import mockDatas from './mock';
 export class LoanListComponent implements OnInit {
   datas!: LoanModel[];
   list!: LoanModel[];
-  count = 3;
+  entry = 0;
 
   constructor() {}
 
   ngOnInit(): void {
+    this.getDatas();
+    this.pageOnChange(1);
+  }
+
+  getDatas() {
     // retrieve mock data
     // Use service and Observable in the future!
     this.datas = [...mockDatas]; // Contains initial value
+    return this.datas;
+  }
 
-    this.pageOnChange(1);
+  getEntry() {
+    this.entry = Math.min(5, this.datas.length);
+    return this.entry;
   }
 
   // Prevent sort and keep keys order
@@ -28,11 +43,30 @@ export class LoanListComponent implements OnInit {
   }
 
   pageCount() {
-    return Math.floor(this.datas.length / this.count);
+    this.checkBound();
+    return Math.floor(this.datas.length / this.entry);
+  }
+
+  checkBound() {
+    if (this.entry > this.datas.length) this.entry = this.datas.length;
   }
 
   pageOnChange(page: number) {
-    const start = (page - 1) * this.count;
-    this.list = this.datas.slice(start, start + this.count);
+    this.checkBound();
+    this.getEntry();
+    const start = (page - 1) * this.entry;
+    this.list = this.datas.slice(start, start + this.entry);
+  }
+
+  filter() {
+    const input = <HTMLInputElement>document.getElementById('loan-search');
+    const value = input.value;
+
+    if (value)
+      this.datas = this.getDatas().filter((obj) =>
+        obj.client.toLowerCase().includes(value.toLowerCase())
+      );
+    else this.getDatas();
+    this.pageOnChange(1);
   }
 }
