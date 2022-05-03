@@ -1,0 +1,54 @@
+* {
+  box-sizing: border-box;
+}
+
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  margin: 5px;
+  background-color: #cdb2c624;
+  border-radius: 5px;
+  backdrop-filter: blur(5px);
+}
+
+.corps {
+  padding: 7px;
+}
+
+.container1,
+.container2,
+.container3,
+.container4 {
+  margin-bottom: 30px;
+}
+
+.foot {
+  justify-content: flex-end;
+}
+
+.head,
+.foot {
+  color: #e9a6a6;
+  text-align: center;
+}
+textarea:focus {
+  border: 2px solid #e9a6a6;
+}
+.bouton {
+  margin-right: 20px;
+  color: #e9a6a6;
+  border: 1px solid #e9a6a6;
+  transition: 0.4s;
+  font-weight: bold;
+  &:hover {
+    background-color: #1f1d36;
+  }
+}
+label {
+  z-index: 0;
+}
+.datedepret {
+  pointer-events: none; //ceci permet à l'utilisateur de ne pas toucher au date de prêt mais donnée automatiquement par la machine
+}
