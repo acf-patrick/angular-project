@@ -17,10 +17,7 @@
   padding: 7px;
 }
 
-.container1,
-.container2,
-.container3,
-.container4 {
+.form {
   margin-bottom: 30px;
 }
 
@@ -42,9 +39,8 @@ textarea:focus {
   border: 1px solid #e9a6a6;
   transition: 0.4s;
   font-weight: bold;
-  &:hover {
-    background-color: #1f1d36;
-  }
+  background-color: #1f1d36;
+  
 }
 label {
   z-index: 0;

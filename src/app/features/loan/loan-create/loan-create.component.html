@@ -4,18 +4,27 @@
       <p class="h3">Formulaire de saisie d'un prêt</p>
     </div>
     <!-- fin du head -->
-    <form [formGroup]="formgroup" (submit)="handleSubmit(formgroup)">
-      <div class="corps container1">
+    <form novalidate (ngsubmit)="handleSubmit()" [formGroup]='formgroup'>
+      <div class="corps form">
         <div class="row">
           <div class="col-md-5 col-sm-12">
             <label for="agent" class="form-label">Responsable</label>
-            <select name="agent" class="form-select agent" id="agent">
+            <select class="form-select agent" id="agent"
+            formControlName = 'Responsable'
+            required
+            [ngClass]="{'is-invalid': formgroup.get('Responsable')?.touched && !formgroup.get('Responsable')?.valid}"
+            >
               <option value="">Agent:</option>
               <option value="rakoto">Rakoto</option>
               <option value="rabe">Rabe</option>
               <option value="naivo">Naivo</option>
               <option value="randrema">Randrema</option>
             </select>
+            <div class="invalid-feedback">
+              <span *ngIf="formgroup.get('Responsable')?.errors?.['required']">
+                  Entrez le nom de l'agent s'il vous plaît!
+              </span>
+            </div>
           </div>
           <div class="col-md-4 col-sm-12">
             <label for="montant" class="form-label">Montant prêt</label>
@@ -26,8 +35,14 @@
                 class="form-control"
                 min="5000"
                 formControlName="money"
-                #money
+                required
+                [ngClass]="{'is-invalid': formgroup.get('money')?.touched && !formgroup.get('money')?.valid}"
               />
+              <div class="invalid-feedback">
+                <span *ngIf="formgroup.get('money')?.errors?.['required']">
+                    Entrez un montant s'il vous plaît!
+                </span>
+              </div>
             </div>
           </div>
           <div class="col-md-3">
@@ -38,15 +53,21 @@
               placeholder="0%"
               min="0"
               max="100"
+              required
               formControlName="pourcentage"
-              #pourcentage
+              [ngClass]="{'is-invalid': formgroup.get('pourcentage')?.touched && !formgroup.get('pourcentage')?.valid}"
             />
+            <div class="invalid-feedback">
+              <span *ngIf="formgroup.get('pourcentage')?.errors?.['required']">
+                  Entrez le pourcentage s'il vous plaît!
+              </span>
+            </div>
           </div>
         </div>
       </div>
       <!-- fin du container1 -->
 
-      <div class="container2">
+      <div class="form">
         <div class="row">
           <div class="col-md-6 col-12">
             <label for="datePret" class="form-label">Date de prêt</label>
@@ -54,9 +75,8 @@
               type="text"
               id="datePret"
               class="form-control datedepret"
+              formControlName = 'dateDePret'
               disable
-              formControlName="dateDePret"
-              #dateDePret
             />
           </div>
           <div class="col-md-6 col-12">
@@ -67,16 +87,23 @@
               type="date"
               id="dateRenboursement"
               class="form-control"
-              formControlName="dateDeRenboursement"
-              #dateDeRenboursement
               min="2050-01-01"
               onfocus="this.min=new Date().toISOString().split('T')[0]"
+              formControlName = 'dateDeRenboursement'
+              required
+              [ngClass]="{'is-invalid': formgroup.get('dateDeRenboursement')?.touched && !formgroup.get('dateDeRenboursement')?.valid}"
+
             />
+            <div class="invalid-feedback">
+              <span *ngIf="formgroup.get('dateDeRenboursement')?.errors?.['required']">
+                  Entrez la date de remboursement s'il vous plaît!
+              </span>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="container3">
+      <div class="form">
         <div class="row">
           <div class="col-md-6 col-12">
             <label for="modeRemboursement" class="form-label"
@@ -87,13 +114,19 @@
               class="form-select"
               id="modeRemboursement"
               formControlName="ModeDeRemboursement"
-              #ModeDeRemboursement
+              required
+              [ngClass]="{'is-invalid': formgroup.get('ModeDeRemboursement')?.touched && !formgroup.get('ModeDeRemboursement')?.valid}"
             >
               <option value="parSemaine">Par semaine</option>
               <option value="parMoins">Par mois</option>
               <option value="trimestrielle">Trimestrielle</option>
               <option value="Semestrielle">Semestrielle</option>
             </select>
+            <div class="invalid-feedback">
+              <span *ngIf="formgroup.get('ModeDeRemboursement')?.errors?.['required']">
+                  Entrez le mode de remboursement s'il vous plaît!
+              </span>
+            </div>
           </div>
           <div class="col-md-6 col-12">
             <label for="modeDepayement" class="form-label"
@@ -103,18 +136,24 @@
               name="modeDepayement"
               class="form-select"
               id="modeDepayement"
-              formControlName="ModeDePayemment"
-              #ModeDePayemment
+              formControlName="ModeDePayemmentcapital"
+              required
+              [ngClass]="{'is-invalid': formgroup.get('ModeDePayemmentcapital')?.touched && !formgroup.get('ModeDePayemmentcapital')?.valid}"
             >
               <option value="mvola">Mvola</option>
               <option value="orangeMoney">Orange money</option>
               <option value="airtelMoney">Airtel money</option>
               <option value="enEspece">En espéce</option>
             </select>
+            <div class="invalid-feedback">
+              <span *ngIf="formgroup.get('ModeDePayemmentcapital')?.errors?.['required']">
+                  Entrez le mode de payement de capital s'il vous plaît!
+              </span>
+            </div>
           </div>
         </div>
       </div>
-      <div class="container4">
+      <div class="form">
         <div class="row">
           <div class="col-md-6">
             <label for="commentaire" class="form-label">Commentaire</label>
@@ -123,7 +162,7 @@
               id="commentaire"
               class="form-control"
               formControlName="Commentaire"
-              #Commentaire
+              placeholder="ici vous pouvez écrire votre commentaire "
             ></textarea>
           </div>
 
@@ -132,23 +171,28 @@
               >Mode de payement d'intêret</label
             >
             <select
-              name="modeDepayementInteret"
               class="form-select"
-              id="modeDepayementInteret"
-              formControlName="Commentaire"
-              #Commentaire
+              id="ModeDePayemment"
+              formControlName="ModeDePayemmentinteret"
+              required
+              [ngClass]="{'is-invalid': formgroup.get('ModeDePayemmentinteret')?.touched && !formgroup.get('ModeDePayemmentinteret')?.valid}"
             >
               <option value="mvola">Mvola</option>
               <option value="orangeMoney">Orange money</option>
               <option value="airtelMoney">Airtel money</option>
               <option value="enEspece">En espéce</option>
             </select>
+            <div class="invalid-feedback">
+              <span *ngIf="formgroup.get('ModeDePayemmentinteret')?.errors?.['required']">
+                  Entrez le mode de payement d'intêret vous plaît!
+              </span>
+            </div>
           </div>
         </div>
       </div>
 
       <div class="foot d-flex">
-        <input type="submit" class="btn bouton mr-6" value="Enregistrer" />
+        <input type="submit" class="btn bouton mr-6" value="Enregistrer" [disabled]="!formgroup.valid"/>
       </div>
     </form>
   </div>

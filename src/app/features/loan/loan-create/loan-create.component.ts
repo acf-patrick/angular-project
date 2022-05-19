@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 @Component({
   selector: 'app-loan-create',
   templateUrl: './loan-create.component.html',
@@ -7,27 +7,26 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class LoanCreateComponent implements OnInit {
   public date: Date = new Date();
-  formgroup: FormGroup;
 
-  constructor(private formulaire: FormBuilder) {
-    this.formgroup = this.formulaire.group({
-      money: [5000, Validators.required],
-      pourcentage: [0, Validators.required],
-      dateDePret: [this.date.toLocaleDateString(), Validators.required],
-      dateDeRenboursement: [null, Validators.required],
-      ModeDeRemboursement: [null, Validators.required],
-      ModeDePayemment: [null, Validators.required],
-      Commentaire: [null, Validators.required],
+  public formgroup: FormGroup = new FormGroup({});
+
+  constructor() {}
+
+  ngOnInit(): void {
+    this.formgroup = new FormGroup({
+      Responsable: new FormControl(),
+      money: new FormControl(),
+      pourcentage: new FormControl(),
+      dateDePret: new FormControl(this.date.toLocaleDateString()),
+      dateDeRenboursement: new FormControl(),
+      ModeDeRemboursement: new FormControl(),
+      ModeDePayemmentcapital: new FormControl(),
+      ModeDePayemmentinteret: new FormControl(),
+      Commentaire: new FormControl(),
     });
   }
 
-  get formControl(): any {
-    return this.formgroup.controls;
-  }
-
-  ngOnInit(): void {}
-
-  handleSubmit(formgroup: any) {
-    console.log(formgroup);
+  handleSubmit() {
+    console.log(this.formgroup);
   }
 }
